@@ -10,6 +10,8 @@ export let options = {
   thresholds: {
     http_req_duration: ["p(95)<100", "p(99.9)<100"],
   },
+
+  summaryTrendStats: ["p(95)", "p(99)", "count"],
 };
 
 export default function () {

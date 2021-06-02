@@ -4,9 +4,9 @@ import { SharedArray } from "k6/data";
 
 export let options = {
   stages: [
-    { duration: "30s", target: 20 },
-    { duration: "30s", target: 20 },
-    { duration: "10s", target: 0 },
+    { duration: "10s", target: 20 },
+    { duration: "10s", target: 20 },
+    { duration: "5s", target: 0 },
   ],
 };
 
@@ -23,7 +23,8 @@ export default function () {
   );
   check(response, { "Status is 200": (r) => r.status === 200 });
   check(response, {
-    "Product Name is 43 Piece dinner Set": (r) =>
-      (r.json()["product_name"] = "43 Piece dinner Set"),
+    "Product Name is Balance Training Bicycle": (r) =>
+      // r.body.product_name == product[1].product_name,
+      r.json()["product_name"] == product[0].product_name,
   });
 }

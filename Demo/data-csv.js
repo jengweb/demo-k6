@@ -5,9 +5,9 @@ import papaparse from "https://jslib.k6.io/papaparse/5.1.1/index.js";
 
 export let options = {
   stages: [
-    { duration: "30s", target: 20 },
-    { duration: "30s", target: 20 },
-    { duration: "10s", target: 0 },
+    { duration: "10s", target: 20 },
+    { duration: "10s", target: 20 },
+    { duration: "5s", target: 0 },
   ],
 };
 
@@ -26,6 +26,6 @@ export default function () {
   check(response, { "Status is 200": (r) => r.status === 200 });
   check(response, {
     "Product Name is 43 Piece dinner Set": (r) =>
-      (r.json()["product_name"] = "43 Piece dinner Set"),
+      r.json()["product_name"] == "43 Piece dinner Set",
   });
 }

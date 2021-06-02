@@ -3,9 +3,9 @@ import { check } from "k6";
 
 export let options = {
   stages: [
-    { duration: "30s", target: 20 },
-    { duration: "30s", target: 20 },
-    { duration: "10s", target: 0 },
+    { duration: "10s", target: 20 },
+    { duration: "10s", target: 20 },
+    { duration: "5s", target: 0 },
   ],
 };
 
@@ -14,5 +14,5 @@ export default function () {
     headers: { Accepts: "application/json" },
   });
   check(response, { "Status is 200": (r) => r.status === 200 });
-  check(response, { "Total is 31 ": (r) => (r.json()["total"] = 31) });
+  check(response, { "Total is 31": (r) => r.body.total == 31 });
 }
