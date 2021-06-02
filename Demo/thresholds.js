@@ -2,14 +2,13 @@ import http from "k6/http";
 
 export let options = {
   stages: [
-    { duration: "30s", target: 20 },
-    { duration: "30s", target: 20 },
-    { duration: "10s", target: 0 },
+    { duration: "10s", target: 20 },
+    { duration: "10s", target: 20 },
+    { duration: "5s", target: 0 },
   ],
 
   thresholds: {
-    http_req_duration: ["p(95)<100"],
-    http_req_duration: ["p(99)<200"],
+    http_req_duration: ["p(95)<100", "p(99.9)<100"],
   },
 };
 
